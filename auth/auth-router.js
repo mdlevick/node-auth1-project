@@ -3,9 +3,9 @@ const router = require("express").Router();
 
 const Users = require("../user/user-model.js");
 
-router.get("/secret", (req, res, next) => {
+router.get("/user", (req, res, next) => {
     if (req.headers.authorization) {
-        bc.hash(req.headers.authorization, 42, (err, hash) => {
+        bc.hash(req.headers.authorization, 8, (err, hash) => {
             
             if (err) {
                 res.status(500).json({ oops: "it broke" });
