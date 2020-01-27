@@ -1,14 +1,15 @@
 exports.up = function(knex) {
-    return knex.schema
-      .createTable("users", tbl => {
-        tbl.increments();
-        tbl.string("userName", 255).notNullable();
-        tbl.string("password", 255).notNullable();
-    })
+    return knex.schema.createTable('users', users => {
+        users.increments();
+
+        users
+          .string('username', 128)
+          .notNullable()
+          .unique();
+        users.string('password', 128).notNullable();
+      });
 };
-  
-// like putting on / taking off socks and shoes!!!
+
 exports.down = function(knex) {
-  return knex.schema
-    .dropTableIfExists("users");
+    return knex.schema.dropTableIfExists('users');
 };
